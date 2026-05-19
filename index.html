@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عيد ميلاد سعيد يا روزان ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <audio id="bg-music" src="music.mp3" loop></audio>
+
+    <canvas id="fireworks-canvas"></canvas>
+
+    <div id="welcome-screen">
+        <h1>مفاجأة خاصة جداً لـ روزان بمناسبة عيد ميلادها 💖</h1>
+        <button class="btn" onclick="startSurprise()">إضغطي هنا للمفاجأة 🎁</button>
+    </div>
+
+    <div id="countdown-screen">
+        <canvas id="matrix-canvas"></canvas>
+        <div id="number">3</div>
+    </div>
+
+    <div id="main-content">
+        <h1 id="final-title" class="main-title">كل عام وأنتِ بقلبي يا روزان 🎂❤️</h1>
+        
+        <div id="card-container" onclick="openCard()">
+            <div class="card-inner" id="card-inner">
+                <div class="card-front">
+                    <div style="font-size: 70px; animation: pulse 1s infinite;">💌🎈</div>
+                    <p style="margin-top:20px; font-weight:bold; font-size:18px;">إدوسي هنا وافتحي كارت المفاجأة يا روزان 💖</p>
+                </div>
+                <div class="card-back">
+                    <img src="images1.jpg" alt="روزان">
+                    <p style="margin-top: 15px; font-weight: bold; color: #b31638;">عيد ميلاد سعيد يا روحي 🎈</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="story-gallery">
+            <div class="story-item" id="pic1">
+                <div class="balloon-head"><span class="balloon">🎈</span><span class="balloon">❤️</span></div>
+                <div class="rope"></div>
+                <div class="polaroid-box"><img src="images1.jpg"></div>
+                <div class="caption-box">يا أجمل روزان في الدنيا 🌸</div>
+            </div>
+            <div class="story-item" id="pic2">
+                <div class="balloon-head"><span class="balloon">❤️</span><span class="balloon">🎈</span></div>
+                <div class="rope"></div>
+                <div class="polaroid-box"><img src="images2.jpg"></div>
+                <div class="caption-box">ضحكتك دي بتنورلي حياتي كلها ✨</div>
+            </div>
+            <div class="story-item" id="pic3">
+                <div class="balloon-head"><span class="balloon">🎈</span><span class="balloon">🎈</span></div>
+                <div class="rope"></div>
+                <div class="polaroid-box"><img src="images3.jpg"></div>
+                <div class="caption-box">كل سنة وأنتِ منورة دنيتي ومعايا 💕</div>
+            </div>
+            <div class="story-item" id="pic4">
+                <div class="balloon-head"><span class="balloon">❤️</span><span class="balloon">❤️</span></div>
+                <div class="rope"></div>
+                <div class="polaroid-box"><img src="images4.jpg"></div>
+                <div class="caption-box">حبك في قلبي بيكبر كل ثانية وعام 👑</div>
+            </div>
+            <div class="story-item" id="pic5">
+                <div class="balloon-head"><span class="balloon">🎈</span><span class="balloon">❤️</span></div>
+                <div class="rope"></div>
+                <div class="polaroid-box"><img src="images5.jpg"></div>
+                <div class="caption-box">يا كل دنيتي وحاضري ومستقبلي 💖</div>
+            </div>
+            <div class="story-item" id="pic6">
+                <div class="balloon-head"><span class="balloon">❤️</span><span class="balloon">🎈</span></div>
+                <div class="rope"></div>
+                <div class="polaroid-box"><img src="images6.jpg"></div>
+                <div class="caption-box">بحبك لآخر يوم في عمري يا روزان 💞</div>
+            </div>
+        </div>
+
+        <div id="wish-box-container">
+            <div id="gift-box" onclick="revealWishForm()">🎁</div>
+            <div id="wish-form">
+                <h3>اكتبي أمنيتكِ للسنة الجديدة هنا وسرّكِ في بير 🤫❤️</h3>
+                <input type="text" id="wish-input" placeholder="اتمني أمنية يا روزان...">
+                <button class="submit-btn" onclick="submitWish()">إرسال الأمنية للسماء ✨</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // سكريبت الماتريكس الوردي
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+        const letters = "ROZAN❤️1234567890🎈✨HAPPYBIRTHDAY🌸";
+        const fontSize = 16; const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#ff4a75'; ctx.font = fontSize + 'px arial';
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters[Math.floor(Math.random() * letters.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() * 0.975 > 0.95) drops[i] = 0;
+                drops[i]++;
+            }
+        }
+
+        let matrixInterval;
+        function startSurprise() {
+            document.getElementById('bg-music').play().catch(e => console.log(e));
+            document.getElementById('welcome-screen').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('welcome-screen').style.display = 'none';
+                document.getElementById('countdown-screen').style.display = 'flex';
+                matrixInterval = setInterval(drawMatrix, 33);
+                runCountdown();
+            }, 800);
+        }
+
+        function runCountdown() {
+            let count = 3; const numElement = document.getElementById('number');
+            let timer = setInterval(() => {
+                count--;
+                if (count > 0) { numElement.innerText = count; } 
+                else {
+                    clearInterval(timer); clearInterval(matrixInterval);
+                    document.getElementById('countdown-screen').style.display = 'none';
+                    document.getElementById('main-content').style.display = 'flex';
+                    generateStars(); // تشغيل تأثير النجوم أول ما تفتح الشاشة الرئيسية
+                }
+            }, 1000);
+        }
+
+        function openCard() {
+            document.getElementById('card-inner').classList.add('open');
+            setTimeout(() => {
+                document.getElementById('card-container').style.display = 'none';
+                document.getElementById('final-title').style.display = 'block';
+                startStoryFlow();
+            }, 3000);
+        }
+
+        let flowInterval;
+        function startStoryFlow() {
+            document.getElementById('story-gallery').style.display = 'block';
+            setInterval(createFallingDecor, 200); 
+
+            let currentPic = 1; const totalPics = 6;
+
+            function showNextPicture() {
+                if (currentPic > totalPics) {
+                    clearInterval(flowInterval); 
+                    document.getElementById('story-gallery').style.display = 'none';
+                    document.getElementById('wish-box-container').style.display = 'flex';
+                    return;
+                }
+
+                const prevItem = document.getElementById('pic' + (currentPic === 1 ? totalPics : currentPic - 1));
+                if (prevItem && currentPic !== 1) {
+                    prevItem.style.bottom = '-600px';
+                    setTimeout(() => { prevItem.style.display = 'none'; }, 1000);
+                }
+
+                const currentItem = document.getElementById('pic' + currentPic);
+                if (currentItem) {
+                    currentItem.style.display = 'flex';
+                    setTimeout(() => { currentItem.style.bottom = '20vh'; }, 100);
+                }
+                currentPic++;
+            }
+
+            showNextPicture();
+            flowInterval = setInterval(showNextPicture, 4000); 
+        }
+
+        function createFallingDecor() {
+            const decor = document.createElement('div');
+            decor.classList.add('falling-decor');
+            const pool = ['🌹', '❤️', '🌸', '💕'];
+            decor.innerHTML = pool[Math.floor(Math.random() * pool.length)];
+            decor.style.left = Math.random() * 100 + 'vw';
+            decor.style.animationDuration = Math.random() * 4 + 3 + 's';
+            decor.style.fontSize = Math.random() * 20 + 15 + 'px';
+            document.body.appendChild(decor);
+            setTimeout(() => { decor.remove(); }, 6000);
+        }
+
+        // كود توليد النجوم المتلألئة
+        function generateStars() {
+            const mainContent = document.getElementById('main-content');
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                const size = Math.random() * 3 + 1 + 'px';
+                star.style.width = size;
+                star.style.height = size;
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.top = Math.random() * 100 + 'vh';
+                star.style.setProperty('--duration', Math.random() * 3 + 2 + 's');
+                star.style.setProperty('--max-opacity', Math.random() * 0.7 + 0.3);
+                mainContent.appendChild(star);
+            }
+        }
+
+        function revealWishForm() {
+            document.getElementById('gift-box').style.display = 'none';
+            document.getElementById('wish-form').style.display = 'block';
+        }
+
+        // دالة إرسال الأمنية للواتساب برقمك المظبوط
+        function submitWish() {
+            const wish = document.getElementById('wish-input').value;
+            if(!wish) return alert("اكتبي أي حاجة يا روزان الأول 🌸");
+            
+            document.getElementById('wish-form').innerHTML = `<h2 style="color:#ff4a75; font-size:22px;">أمنيتك طارت للسما وهتتحقق إن شاء الله يا روزان 🚀✨</h2>`;
+            document.getElementById('fireworks-canvas').style.display = 'block';
+            initFireworks();
+
+            // تم ربط رقمك الدولي هنا بنجاح
+            const myPhoneNumber = "201091822235"; 
+            
+            const message = encodeURIComponent(`أمنيتي في عيد ميلادي السنة دي هي: (${wish}) ❤️✨`);
+            
+            setTimeout(() => {
+                window.open(`https://wa.me/${myPhoneNumber}?text=${message}`, '_blank');
+            }, 2500);
+        }
+
+        // سكريبت الألعاب النارية
+        const fCanvas = document.getElementById('fireworks-canvas');
+        const fCtx = fCanvas.getContext('2d');
+        let particles = [];
+
+        function initFireworks() {
+            fCanvas.width = window.innerWidth; fCanvas.height = window.innerHeight;
+            animateFireworks();
+            setInterval(() => {
+                createFirework(Math.random() * fCanvas.width, Math.random() * (fCanvas.height/2));
+            }, 600);
+        }
+
+        function createFirework(x, y) {
+            const count = 60;
+            const colors = ['#ff4a75', '#ff7b92', '#ffeb3b', '#00e676', '#00b0ff', '#e040fb'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            for (let i = 0; i < count; i++) {
+                const angle = Math.random() * Math.PI * 2;
+                const speed = Math.random() * 5 + 2;
+                particles.push({
+                    x: x, y: y,
+                    vx: Math.cos(angle) * speed,
+                    vy: Math.sin(angle) * speed,
+                    alpha: 1,
+                    color: color
+                });
+            }
+        }
+
+        function animateFireworks() {
+            requestAnimationFrame(animateFireworks);
+            fCtx.fillStyle = 'rgba(5, 2, 26, 0.2)';
+            fCtx.fillRect(0, 0, fCanvas.width, fCanvas.height);
+
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+                p.x += p.vx; p.y += p.vy; p.vy += 0.04;
+                p.alpha -= 0.015;
+                if (p.alpha <= 0) { particles.splice(i, 1); continue; }
+                fCtx.globalAlpha = p.alpha; fCtx.fillStyle = p.color;
+                fCtx.beginPath(); fCtx.arc(p.x, p.y, 3, 0, Math.PI * 2); fCtx.fill();
+            }
+        }
+    </script>
+</body>
+</html>
