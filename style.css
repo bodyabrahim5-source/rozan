@@ -8,6 +8,7 @@ body {
     text-align: center;
     height: 100vh;
     width: 100vw;
+    position: relative;
 }
 
 /* 1. شاشة الترحيب */
@@ -27,13 +28,28 @@ body {
 #matrix-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
 #number { position: relative; z-index: 2; font-size: 150px; font-weight: bold; color: #ff7b92; text-shadow: 0 0 30px #ff4a75; animation: pulse 1s infinite; }
 
+/* حتة الهزار: شاشة النكدية */
+#joke-screen {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: #05021a; z-index: 9997; justify-content: center; align-items: center;
+}
+#joke-text { font-size: 2.5rem; font-weight: bold; color: #ff4a75; text-shadow: 0 0 20px rgba(255,74,117,0.8); animation: pulse 0.8s infinite; padding: 0 20px; }
+
 /* 3. الشاشة الرئيسية للمفاجأة */
 #main-content { 
     display: none; height: 100%; width: 100%; 
     position: relative; flex-direction: column; justify-content: center; align-items: center; 
     background: radial-gradient(circle, #1a0b2e 0%, #05021a 100%); overflow: hidden;
 }
-.main-title { position: absolute; top: 40px; font-size: 2rem; color: #ff4a75; text-shadow: 0 0 20px rgba(255, 74, 117, 0.7); z-index: 10; display: none; }
+.main-title { position: absolute; top: 60px; font-size: 2rem; color: #ff4a75; text-shadow: 0 0 20px rgba(255, 74, 117, 0.7); z-index: 10; display: none; }
+
+/* شريط الستوري فوق خالص */
+#stories-progress-container {
+    display: none; position: absolute; top: 20px; left: 5%; width: 90%;
+    gap: 6px; z-index: 100; justify-content: center; align-items: center;
+}
+.progress-bar-bg { flex: 1; height: 4px; background: rgba(255, 255, 255, 0.2); border-radius: 2px; overflow: hidden; }
+.progress-bar-fill { width: 0%; height: 100%; background: #ff4a75; transition: width 4s linear; }
 
 /* زرار الدخول */
 .btn { 
@@ -44,7 +60,7 @@ body {
 .btn:hover { transform: scale(1.1); box-shadow: 0 15px 35px rgba(255,255,255,0.4); }
 
 /* كارت البداية التفاعلي */
-#card-container { width: 300px; height: 400px; perspective: 1000px; z-index: 5; cursor: pointer; }
+#card-container { width: 300px; height: 400px; perspective: 1000px; z-index: 5; cursor: pointer; display: none; }
 .card-inner { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 1.2s ease; }
 .card-inner.open { transform: rotateY(180deg); }
 .card-front, .card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 15px; box-shadow: 0 15px 35px rgba(0,0,0,0.5); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; }
@@ -68,16 +84,12 @@ body {
 .polaroid-box img { width: 100%; height: 200px; object-fit: cover; border-radius: 2px; }
 .caption-box { background: linear-gradient(135deg, #ff4a75, #ff7b92); color: white; border: 2px solid white; border-radius: 25px; padding: 8px 25px; margin-top: 15px; font-size: 16px; font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.2); text-shadow: 0 1px 3px rgba(0,0,0,0.2); }
 
-/* زينة الخلفية المتساقطة */
+/* زينة الخلفية والنجوم */
 .falling-decor { position: fixed; top: -10%; z-index: 2; pointer-events: none; animation: fall linear infinite; }
+.star { position: absolute; background: white; border-radius: 50%; animation: twinkle var(--duration) infinite ease-in-out; opacity: 0; pointer-events: none; }
+.sparkle { position: fixed; pointer-events: none; z-index: 99999; font-size: 18px; transform: translate(-50%, -50%); animation: sparkleFade 0.8s ease-out forwards; }
 
-/* لمسة المطور: النجوم المتلألئة في الخلفية */
-.star {
-    position: absolute; background: white; border-radius: 50%;
-    animation: twinkle var(--duration) infinite ease-in-out; opacity: 0;
-}
-
-/* صندوق الأمنيات السري */
+/* صندوق الأمنيات */
 #wish-box-container {
     display: none; position: absolute; z-index: 20; flex-direction: column; justify-content: center; align-items: center;
 }
@@ -100,11 +112,17 @@ body {
     border-radius: 20px; font-weight: bold; font-size: 16px; cursor: pointer; width: 100%;
 }
 
-/* كانفاس الألعاب النارية */
-#fireworks-canvas {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    z-index: 30; pointer-events: none; display: none;
+/* زرار الإعادة */
+#replay-btn {
+    display: none; position: absolute; bottom: 50px; z-index: 40;
+    background: white; color: #b31638; padding: 12px 35px; border-radius: 30px;
+    font-weight: bold; border: 3px solid #ff4a75; cursor: pointer; font-size: 16px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); animation: fadeInDown 1s ease-out;
 }
+#replay-btn:hover { transform: scale(1.05); background: #ff4a75; color: white; }
+
+/* كانفاس الألعاب النارية */
+#fireworks-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 30; pointer-events: none; display: none; }
 
 /* الأنيميشنز */
 @keyframes pulse { 0% { transform: scale(0.8); opacity: 0.5; } 50% { transform: scale(1.1); opacity: 1; } 100% { transform: scale(0.8); opacity: 0.5; } }
@@ -113,3 +131,4 @@ body {
 @keyframes gentle-sway { 0% { transform: translateX(-52%) rotate(-2deg); } 100% { transform: translateX(-48%) rotate(2deg); } }
 @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes twinkle { 0%, 100% { opacity: 0; } 50% { opacity: var(--max-opacity); } }
+@keyframes sparkleFade { 0% { opacity: 1; transform: translate(-50%, -50%) scale(1) translateY(0); } 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.5) translateY(-30px); } }

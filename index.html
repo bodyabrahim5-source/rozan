@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عيد ميلاد سعيد يا روزان ❤️</title>
+    <title>كل سنة وأنتِ طيبة يا روزان ❤️</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,8 +13,8 @@
     <canvas id="fireworks-canvas"></canvas>
 
     <div id="welcome-screen">
-        <h1>مفاجأة خاصة جداً لـ روزان بمناسبة عيد ميلادها 💖</h1>
-        <button class="btn" onclick="startSurprise()">إضغطي هنا للمفاجأة 🎁</button>
+        <h1>مفاجأة جامدة جداً لـ روزان في عيد ميلادها 💖</h1>
+        <button class="btn" onclick="startSurprise()">دوسي هنا وشوفي المفاجأة 🎁</button>
     </div>
 
     <div id="countdown-screen">
@@ -22,18 +22,31 @@
         <div id="number">3</div>
     </div>
 
+    <div id="joke-screen">
+        <div id="joke-text">كل سنة وأنتِ نكدية قلبي 😂❤️</div>
+    </div>
+
     <div id="main-content">
-        <h1 id="final-title" class="main-title">كل عام وأنتِ بقلبي يا روزان 🎂❤️</h1>
+        <div id="stories-progress-container">
+            <div class="progress-bar-bg"><div class="progress-bar-fill" id="fill1"></div></div>
+            <div class="progress-bar-bg"><div class="progress-bar-fill" id="fill2"></div></div>
+            <div class="progress-bar-bg"><div class="progress-bar-fill" id="fill3"></div></div>
+            <div class="progress-bar-bg"><div class="progress-bar-fill" id="fill4"></div></div>
+            <div class="progress-bar-bg"><div class="progress-bar-fill" id="fill5"></div></div>
+            <div class="progress-bar-bg"><div class="progress-bar-fill" id="fill6"></div></div>
+        </div>
+
+        <h1 id="final-title" class="main-title">كل سنة وأنتِ قلبي يا روزان 🎂❤️</h1>
         
-        <div id="card-container" onclick="openCard()">
-            <div class="card-inner" id="card-inner">
+        <div id="card-container">
+            <div class="card-inner" id="card-inner" onclick="openCard()">
                 <div class="card-front">
                     <div style="font-size: 70px; animation: pulse 1s infinite;">💌🎈</div>
-                    <p style="margin-top:20px; font-weight:bold; font-size:18px;">إدوسي هنا وافتحي كارت المفاجأة يا روزان 💖</p>
+                    <p style="margin-top:20px; font-weight:bold; font-size:18px;">دوسي هنا وافتحي كارت المفاجأة يا روزان 💖</p>
                 </div>
                 <div class="card-back">
                     <img src="images1.jpg" alt="روزان">
-                    <p style="margin-top: 15px; font-weight: bold; color: #b31638;">عيد ميلاد سعيد يا روحي 🎈</p>
+                    <p style="margin-top: 15px; font-weight: bold; color: #b31638;">أحلى عيد ميلاد يا روحي 🎈</p>
                 </div>
             </div>
         </div>
@@ -43,37 +56,37 @@
                 <div class="balloon-head"><span class="balloon">🎈</span><span class="balloon">❤️</span></div>
                 <div class="rope"></div>
                 <div class="polaroid-box"><img src="images1.jpg"></div>
-                <div class="caption-box">يا أجمل روزان في الدنيا 🌸</div>
+                <div class="caption-box">يا أجمل روزان في الدنيا كلها 🌸</div>
             </div>
             <div class="story-item" id="pic2">
                 <div class="balloon-head"><span class="balloon">❤️</span><span class="balloon">🎈</span></div>
                 <div class="rope"></div>
                 <div class="polaroid-box"><img src="images2.jpg"></div>
-                <div class="caption-box">ضحكتك دي بتنورلي حياتي كلها ✨</div>
+                <div class="caption-box">ضحكتك دي بتنورلي دنيتي ✨</div>
             </div>
             <div class="story-item" id="pic3">
                 <div class="balloon-head"><span class="balloon">🎈</span><span class="balloon">🎈</span></div>
                 <div class="rope"></div>
                 <div class="polaroid-box"><img src="images3.jpg"></div>
-                <div class="caption-box">كل سنة وأنتِ منورة دنيتي ومعايا 💕</div>
+                <div class="caption-box">كل سنة وأنتِ منورة حياتي ومعايا ومجنناني 💕</div>
             </div>
             <div class="story-item" id="pic4">
                 <div class="balloon-head"><span class="balloon">❤️</span><span class="balloon">❤️</span></div>
                 <div class="rope"></div>
                 <div class="polaroid-box"><img src="images4.jpg"></div>
-                <div class="caption-box">حبك في قلبي بيكبر كل ثانية وعام 👑</div>
+                <div class="caption-box">حبك في قلبي بيكبر مع كل ثانية بتعدي 👑</div>
             </div>
             <div class="story-item" id="pic5">
                 <div class="balloon-head"><span class="balloon">🎈</span><span class="balloon">❤️</span></div>
                 <div class="rope"></div>
                 <div class="polaroid-box"><img src="images5.jpg"></div>
-                <div class="caption-box">يا كل دنيتي وحاضري ومستقبلي 💖</div>
+                <div class="caption-box">يا كل دنيتي وسندي وأجمل شخصيه ليا 💖</div>
             </div>
             <div class="story-item" id="pic6">
                 <div class="balloon-head"><span class="balloon">❤️</span><span class="balloon">🎈</span></div>
                 <div class="rope"></div>
                 <div class="polaroid-box"><img src="images6.jpg"></div>
-                <div class="caption-box">بحبك لآخر يوم في عمري يا روزان 💞</div>
+                <div class="caption-box">بحبك لآخر يوم في عمري يا روزان يا قلبي 💞</div>
             </div>
         </div>
 
@@ -82,9 +95,11 @@
             <div id="wish-form">
                 <h3>اكتبي أمنيتكِ للسنة الجديدة هنا وسرّكِ في بير 🤫❤️</h3>
                 <input type="text" id="wish-input" placeholder="اتمني أمنية يا روزان...">
-                <button class="submit-btn" onclick="submitWish()">إرسال الأمنية للسماء ✨</button>
+                <button class="submit-btn" onclick="submitWish()">طيري الأمنية للسما ✨</button>
             </div>
         </div>
+
+        <button id="replay-btn" onclick="resetWholeSurprise()">لو حابة تشوفي المفاجأة من الأول تاني دوسي هنا 🔄❤️</button>
 
     </div>
 
@@ -128,10 +143,25 @@
                 else {
                     clearInterval(timer); clearInterval(matrixInterval);
                     document.getElementById('countdown-screen').style.display = 'none';
-                    document.getElementById('main-content').style.display = 'flex';
-                    generateStars(); // تشغيل تأثير النجوم أول ما تفتح الشاشة الرئيسية
+                    
+                    // تشغيل شاشة الهزار (نكدية قلبي) لمدة ثانيتين
+                    runJokeScreen();
                 }
             }, 1000);
+        }
+
+        function runJokeScreen() {
+            const jokeScreen = document.getElementById('joke-screen');
+            jokeScreen.style.display = 'flex';
+            
+            setTimeout(() => {
+                jokeScreen.style.display = 'none';
+                // بعد ما تخلص شاشة الهزار يفتح المحتوى ويظهر الكارت
+                document.getElementById('main-content').style.display = 'flex';
+                document.getElementById('card-container').style.display = 'flex';
+                generateStars();
+                enableMagicTrail();
+            }, 2500); // هتقعد ثانيتين ونص بالظبط
         }
 
         function openCard() {
@@ -139,21 +169,26 @@
             setTimeout(() => {
                 document.getElementById('card-container').style.display = 'none';
                 document.getElementById('final-title').style.display = 'block';
+                document.getElementById('stories-progress-container').style.display = 'flex';
                 startStoryFlow();
             }, 3000);
         }
 
         let flowInterval;
+        let decorInterval;
         function startStoryFlow() {
             document.getElementById('story-gallery').style.display = 'block';
-            setInterval(createFallingDecor, 200); 
+            if(!decorInterval) decorInterval = setInterval(createFallingDecor, 200); 
 
             let currentPic = 1; const totalPics = 6;
+
+            for(let i=1; i<=6; i++) { document.getElementById('fill' + i).style.width = '0%'; }
 
             function showNextPicture() {
                 if (currentPic > totalPics) {
                     clearInterval(flowInterval); 
                     document.getElementById('story-gallery').style.display = 'none';
+                    document.getElementById('stories-progress-container').style.display = 'none';
                     document.getElementById('wish-box-container').style.display = 'flex';
                     return;
                 }
@@ -168,6 +203,10 @@
                 if (currentItem) {
                     currentItem.style.display = 'flex';
                     setTimeout(() => { currentItem.style.bottom = '20vh'; }, 100);
+                    
+                    setTimeout(() => {
+                        document.getElementById('fill' + currentPic).style.width = '100%';
+                    }, 50);
                 }
                 currentPic++;
             }
@@ -188,9 +227,9 @@
             setTimeout(() => { decor.remove(); }, 6000);
         }
 
-        // كود توليد النجوم المتلألئة
         function generateStars() {
             const mainContent = document.getElementById('main-content');
+            if (mainContent.querySelector('.star')) return;
             for (let i = 0; i < 50; i++) {
                 const star = document.createElement('div');
                 star.classList.add('star');
@@ -205,28 +244,72 @@
             }
         }
 
+        function enableMagicTrail() {
+            const handleMove = (e) => {
+                const x = e.touches ? e.touches[0].clientX : e.clientX;
+                const y = e.touches ? e.touches[0].clientY : e.clientY;
+                if(Math.random() > 0.15) return;
+                
+                const sparkle = document.createElement('div');
+                sparkle.classList.add('sparkle');
+                const pool = ['✨', '❤️', '🎈', '💖'];
+                sparkle.innerHTML = pool[Math.floor(Math.random() * pool.length)];
+                sparkle.style.left = x + 'px';
+                sparkle.style.top = y + 'px';
+                document.body.appendChild(sparkle);
+                setTimeout(() => sparkle.remove(), 800);
+            };
+            window.addEventListener('mousemove', handleMove);
+            window.addEventListener('touchmove', handleMove);
+        }
+
         function revealWishForm() {
             document.getElementById('gift-box').style.display = 'none';
             document.getElementById('wish-form').style.display = 'block';
         }
 
-        // دالة إرسال الأمنية للواتساب برقمك المظبوط
+        let fireworkTimer;
         function submitWish() {
             const wish = document.getElementById('wish-input').value;
             if(!wish) return alert("اكتبي أي حاجة يا روزان الأول 🌸");
             
-            document.getElementById('wish-form').innerHTML = `<h2 style="color:#ff4a75; font-size:22px;">أمنيتك طارت للسما وهتتحقق إن شاء الله يا روزان 🚀✨</h2>`;
+            document.getElementById('wish-form').innerHTML = `<h2 style="color:#ff4a75; font-size:22px; animation: pulse 1.5s infinite;">أمنيتك طارت للسما وهتتحقق إن شاء الله يا روزان 🚀✨</h2>`;
             document.getElementById('fireworks-canvas').style.display = 'block';
             initFireworks();
 
-            // تم ربط رقمك الدولي هنا بنجاح
+            document.getElementById('replay-btn').style.display = 'block';
+
+            // رقم تليفونك المظبوط متثبت هنا دولي ومضمون
             const myPhoneNumber = "201091822235"; 
-            
             const message = encodeURIComponent(`أمنيتي في عيد ميلادي السنة دي هي: (${wish}) ❤️✨`);
             
             setTimeout(() => {
                 window.open(`https://wa.me/${myPhoneNumber}?text=${message}`, '_blank');
             }, 2500);
+        }
+
+        function resetWholeSurprise() {
+            document.getElementById('replay-btn').style.display = 'none';
+            document.getElementById('fireworks-canvas').style.display = 'none';
+            document.getElementById('wish-box-container').style.display = 'none';
+            document.getElementById('final-title').style.display = 'none';
+            
+            document.getElementById('card-inner').classList.remove('open');
+            document.getElementById('card-container').style.display = 'flex';
+            
+            document.getElementById('gift-box').style.display = 'block';
+            document.getElementById('wish-form').style.display = 'none';
+            document.getElementById('wish-form').innerHTML = `
+                <h3>اكتبي أمنيتكِ للسنة الجديدة هنا وسرّكِ في بير 🤫❤️</h3>
+                <input type="text" id="wish-input" placeholder="اتمني أمنية يا روزان...">
+                <button class="submit-btn" onclick="submitWish()">طيري الأمنية للسما ✨</button>
+            `;
+            
+            for(let i=1; i<=6; i++) {
+                const pic = document.getElementById('pic' + i);
+                pic.style.display = 'none';
+                pic.style.bottom = '-600px';
+            }
         }
 
         // سكريبت الألعاب النارية
@@ -237,7 +320,8 @@
         function initFireworks() {
             fCanvas.width = window.innerWidth; fCanvas.height = window.innerHeight;
             animateFireworks();
-            setInterval(() => {
+            if(fireworkTimer) clearInterval(fireworkTimer);
+            fireworkTimer = setInterval(() => {
                 createFirework(Math.random() * fCanvas.width, Math.random() * (fCanvas.height/2));
             }, 600);
         }
@@ -260,6 +344,7 @@
         }
 
         function animateFireworks() {
+            if(document.getElementById('fireworks-canvas').style.display === 'none') return;
             requestAnimationFrame(animateFireworks);
             fCtx.fillStyle = 'rgba(5, 2, 26, 0.2)';
             fCtx.fillRect(0, 0, fCanvas.width, fCanvas.height);
